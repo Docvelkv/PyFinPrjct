@@ -12,7 +12,6 @@ def analog_get_dummies(ser_data: pd.Series) -> pd.DataFrame:
     Returns:
         pd.DataFrame: Объект DataFrame
     """
-    add_name = ser_data.name
     lst_val = ser_data.tolist()
     uniq_val = ser_data.unique().tolist()
     new_dict = {}
@@ -23,5 +22,5 @@ def analog_get_dummies(ser_data: pd.Series) -> pd.DataFrame:
                 new_lst.append(1)
             else:
                 new_lst.append(0)
-        new_dict[f"{add_name}_{uniq_val[ik]}"] = new_lst
+        new_dict[uniq_val[ik]] = new_lst
     return pd.DataFrame(new_dict)
